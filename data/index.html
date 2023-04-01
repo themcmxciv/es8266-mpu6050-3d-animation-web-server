@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESP MPU6050 Web Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/107/three.min.js"></script>
+  </head>
+  <body>
+    <div class="topnav">
+      <h1>MPU6050 Sensor Readings</h1>
+    </div>
+    <div class="content">
+      <div class="cards">
+        <div class="card">
+          <p class="card-title">Gyroscope</p>
+          <p>
+            <span class="reading">X: <span id="rotationX"></span> rad</span>
+          </p>
+          <p>
+            <span class="reading">Y: <span id="rotationY"></span> rad</span>
+          </p>
+          <p>
+            <span class="reading">Z: <span id="rotationZ"></span> rad</span>
+          </p>
+        </div>
+        <div class="card">
+          <p class="card-title">Accelerometer</p>
+          <p>
+            <span class="reading"
+              >X: <span id="accelerationX"></span> m/s<sup>2</sup></span
+            >
+          </p>
+          <p>
+            <span class="reading"
+              >Y: <span id="accelerationY"></span> m/s<sup>2</sup></span
+            >
+          </p>
+          <p>
+            <span class="reading"
+              >Z: <span id="accelerationZ"></span> m/s<sup>2</sup></span
+            >
+          </p>
+        </div>
+        <div class="card">
+          <p class="card-title">Temperature</p>
+          <p>
+            <span class="reading"><span id="temperature"></span> &deg;C</span>
+          </p>
+          <p class="card-title">3D Animation:</p>
+          <button id="reset" onclick="resetPosition(this)">RESET</button>
+          <button id="resetX" onclick="resetPosition(this)">X</button>
+          <button id="resetY" onclick="resetPosition(this)">Y</button>
+          <button id="resetZ" onclick="resetPosition(this)">Z</button>
+        </div>
+      </div>
+      <div class="cube-content">
+        <div id="3Dcube"></div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
