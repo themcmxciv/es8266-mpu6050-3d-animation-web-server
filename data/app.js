@@ -10,7 +10,7 @@ function parentHeight(elem) {
   return elem.parentElement.clientHeight;
 }
 
-// Fungsi untuk membuatan model 3D
+// Fungsi untuk pembuatan model 3D
 function initialize_3D() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0xffffff);
