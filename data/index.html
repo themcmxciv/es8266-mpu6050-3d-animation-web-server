@@ -4,7 +4,11 @@
     <title>ESP MPU6050 Web Server</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="data:," />
+
+    <!-- CSS untuk membuat tampilan terlihat rapih -->
     <link rel="stylesheet" type="text/css" href="./style.css" />
+
+    <!-- Library yang dibutuhkan untuk membuat model 3D -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/107/three.min.js"></script>
   </head>
   <body>
@@ -13,6 +17,7 @@
     </div>
     <div class="content">
       <div class="cards">
+        <!-- Data dari Gyroscope akan dipambilkan ke dalam X: Y: Z: -->
         <div class="card">
           <p class="card-title">Gyroscope</p>
           <p>
@@ -25,6 +30,8 @@
             <span class="reading">Z: <span id="rotationZ"></span> rad</span>
           </p>
         </div>
+
+        <!-- Data dari Accelerometer akan ditampilkan ke dalam X: Y: Z: -->
         <div class="card">
           <p class="card-title">Accelerometer</p>
           <p>
@@ -43,11 +50,15 @@
             >
           </p>
         </div>
+
+        <!-- Data dari Sensor Suhu akan ditampilkan ke dalam id temperature -->
         <div class="card">
           <p class="card-title">Temperature</p>
           <p>
             <span class="reading"><span id="temperature"></span> &deg;C</span>
           </p>
+
+          <!-- Button RESET akan membuat data yang sudah diterima kembali ke 0 -->
           <p class="card-title">3D Animation:</p>
           <button id="reset" onclick="resetPosition(this)">RESET</button>
           <button id="resetX" onclick="resetPosition(this)">X</button>
@@ -56,9 +67,12 @@
         </div>
       </div>
       <div class="cube-content">
+        <!-- Model 3D akan ditampilkan ke dalam id 3DCube -->
         <div id="3Dcube"></div>
       </div>
     </div>
+
+    <!-- File JS yang berisi code untuk menerima data dari NodeMCU Server -->
     <script src="./app.js"></script>
   </body>
 </html>

@@ -1,13 +1,16 @@
 let scene, camera, rendered, cube;
 
+// Fungsi untuk mendapatkan lebar halaman
 function parentWidth(elem) {
   return elem.parentElement.clientWidth;
 }
 
+// Fungsi untuk mendapatkan tinggi halaman
 function parentHeight(elem) {
   return elem.parentElement.clientHeight;
 }
 
+// Fungsi untuk membuatan model 3D
 function initialize_3D() {
   scene = new THREE.Scene();
   scene.background = new THREE.Color(0xffffff);
@@ -47,6 +50,7 @@ function initialize_3D() {
   renderer.render(scene, camera);
 }
 
+// Fungsi untuk merubah model 3D ketika ada event resize window
 function onWindowResize() {
   camera.aspect =
     parentWidth(document.getElementById('3Dcube')) /
@@ -60,10 +64,11 @@ function onWindowResize() {
   );
 }
 
+// Pendaftaran event window resuze
 window.addEventListener('resize', onWindowResize, false);
 
-initialize_3D();
-
+// Pengecekan fungsi EventSource dan pembuatan EventSource listener
+// Berfungsi untuk mendapatkan data sensor dari web server ke browser
 if (!!window.EventSource) {
   var source = new EventSource('/events');
 
@@ -85,6 +90,8 @@ if (!!window.EventSource) {
     false
   );
 
+  // Pendaftaran event dan membaca data dari sensor gyroscope
+  // Kemudian ditampilkan ke halaman
   source.addEventListener(
     'gyro_readings',
     function (e) {
@@ -101,6 +108,8 @@ if (!!window.EventSource) {
     false
   );
 
+  // Pendaftaran event dan membaca data dari sensor suhu
+  // Kemudian ditampilkan ke halaman
   source.addEventListener(
     'temperature_reading',
     function (e) {
@@ -110,6 +119,8 @@ if (!!window.EventSource) {
     false
   );
 
+  // Pendaftaran event dan membaca data dari sensor accelerometer
+  // Kemudian ditampilkan ke halaman
   source.addEventListener(
     'accelerometer_readings',
     function (e) {
@@ -123,9 +134,13 @@ if (!!window.EventSource) {
   );
 }
 
+// Fungsi untuk me-reset data dari sensor
 function resetPosition(element) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', '/' + element.id, true);
   console.log(element.id);
   xhr.send();
 }
+
+// Eksekusi fungsi pembuatan model 3D
+initialize_3D();
